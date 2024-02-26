@@ -1,0 +1,27 @@
+<swiper #swiper class="container-carousel" [config]="configBig">
+
+    <ng-template swiperSlide *ngFor="let productimg of images">
+
+        <div class="img-view">
+            <img class="img-fluid pointer" (click)="changeImgView(productimg)"
+                [src]="productimg | imagen:'productos'">
+        </div>
+
+    </ng-template>
+
+</swiper>
+
+<swiper (click)="onSwiper($event)" class="container-carousel mt-1" [config]="config">
+
+    <ng-template swiperSlide *ngFor="let productimg of images">
+
+        <div class="img-view">
+            <img class="img-fluid pointer" (click)="changeImgView(productimg)"
+                [src]="productimg | imagen:'productos'">
+        </div>
+
+    </ng-template>
+
+</swiper>
+
+<div class="swiper-custom-pagination text-center mb-1"></div>

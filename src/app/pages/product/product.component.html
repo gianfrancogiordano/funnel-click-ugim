@@ -1,0 +1,16 @@
+<!-- Inicio de landing -->
+<div class="container text-center">
+    <div class="product-description" [innerHtml]="marketService.producto.descripcion | noSanitize"></div>
+
+    <app-slider-product-img [images]="marketService.producto.images"></app-slider-product-img>
+
+</div>
+<!-- Fin de landing -->
+<!-- Inicio de carrito y formulario -->
+<app-cart-form [producto-input]="marketService.producto"
+               [clickstoreProducto]="clickstoreProducto"
+               [wsnumber]="wsnumber"></app-cart-form>
+<!-- Fin de carrito y formulario -->
+<!-- Inicio del footer -->
+<!-- <app-footer [logo]="logo"></app-footer> -->
+<!-- Fin del footer -->

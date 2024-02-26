@@ -1,0 +1,36 @@
+.img-logo {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.container-product {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.img-product {
+    width: 100px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.btn-variantes {
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.product-price {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.old-price {
+    margin-right: 15px;
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-decoration: line-through;
+    text-decoration-color: red;
+    color: grey;
+}
+

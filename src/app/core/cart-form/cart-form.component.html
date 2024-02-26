@@ -1,0 +1,187 @@
+<!-- Inicio de carrito y formulario -->
+<div class="container mt-1">
+
+    <div class="row mt-1">
+        <div class="col-12">
+            <!-- <img class="img-fluid" src="../assets/core-img/pedido.gif" alt=""> -->
+        </div>
+    </div>
+
+    <div class="row" [formGroup]="formClienteData">
+        <div class="col-12 text-center mb-1 mt-3">
+
+            <ng-container *ngIf="producto.variacion.length > 1">
+                <label *ngIf="producto.variacion[1].variaciones.length > 0">Selecciona el {{ producto.variacion[1].name }}</label>
+                <div *ngIf="producto.variacion[1].variaciones.length > 0" class="m-2">
+
+                    <div class="btn-group-vertical m-1"
+                         role="group"
+                         (click)="setImg(i)"
+                         *ngFor="let v2 of producto.variacion[1].variaciones; index as i">
+
+                        <input type="radio"
+                               class="btn-check"
+                               formControlName="variacion2"
+                               name="variacion2"
+                               value="{{ v2 }}"
+                               id="variacion2-{{i}}"
+                               autocomplete="off">
+
+                        <label class="btn btn-outline-secondary" for="variacion2-{{i}}">
+                            <div class="container-label">
+                                <span>{{ v2 }}</span>
+                                <img class="img-fluid img-product" [src]="producto.images[i] | imagen:'productos'" alt="">
+                            </div>
+                        </label>
+
+                    </div>
+
+                </div>
+            </ng-container>
+
+        </div>
+
+        <div class="col-12 text-center mb-5 mt-3">
+
+            <ng-container *ngIf="producto.variacion.length > 0">
+                <label *ngIf="producto.variacion[0].variaciones.length > 0">Selecciona {{ producto.variacion[0].name }}</label>
+                <div *ngIf="producto.variacion[0].variaciones.length > 0" class="mt-2">
+
+                        <div class="btn-group-vertical m-1" role="group" *ngFor="let v1 of producto.variacion[0].variaciones; index as i">
+
+                            <input type="radio"
+                                   class="btn-check"
+                                   formControlName="variacion1"
+                                   value="{{ v1 }}"
+                                   name="variacion1"
+                                   id="variacion1-{{i}}"
+                                   autocomplete="off">
+
+                            <label class="btn btn-outline-secondary" for="variacion1-{{i}}">{{ v1 }}</label>
+
+                        </div>
+
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="row text-center mt-1 mb-3">
+                <div class="col-12">
+                    <!-- <img class="img-fluid" src="assets/core-img/formulario.png" alt=""> -->
+                </div>
+            </div>
+
+
+            <div [formGroup]="formClienteData">
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre y Apellido <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="{'invalid': campoNoValido('nombre')}" formControlName="nombre" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('nombre')" class="small text-danger">Por favor escribe tu Nombre y Apellido</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Correo <span class="text-danger">*</span></label>
+                    <input type="email" [ngClass]="{'invalid': campoNoValido('email')}" formControlName="email" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('email')" class="small text-danger">Por favor escribe tu Correo</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Teléfono <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="{'invalid': campoNoValido('telefono')}" formControlName="telefono" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('telefono')" class="small text-danger">Por favor escribe tu teléfono, solo se permiten números</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Dirección <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="{'invalid': campoNoValido('direccion')}" formControlName="direccion" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('direccion')" class="small text-danger">Por favor escribe tu Dirección</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Barrio <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="{'invalid': campoNoValido('barrio')}" formControlName="barrio" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('barrio')" class="small text-danger">Por favor escribe tu Barrio</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Ciudad <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="{'invalid': campoNoValido('ciudad')}" formControlName="ciudad" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('ciudad')" class="small text-danger">Por favor escribe tu Ciudad</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Departamento <span class="text-danger">*</span></label>
+                    <input type="text" [ngClass]="{'invalid': campoNoValido('departamento')}" formControlName="departamento" class="form-control" id="exampleFormControlInput1">
+                    <div *ngIf="campoNoValido('departamento')" class="small text-danger">Por favor escribe tu Departamento</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-12">
+
+            <table *ngIf="this.formClienteData.get('variacion1')?.invalid === true && this.formClienteData.get('variacion2')?.invalid === true && submitPedidoValidator" class="table mt-3">
+                <thead>
+                    <tr><th colspan="3" class="text-center table-danger">Debes seleccionar Color y Talla</th></tr>
+                </thead>
+            </table>
+
+            <table *ngIf="this.formClienteData.get('variacion1')?.valid === true && this.formClienteData.get('variacion2')?.valid === true" class="table mt-3">
+                <thead>
+                    <tr><th colspan="3" class="text-center table-secondary">!Hiciste una gran selección!</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="table-success">
+                        <td scope="row">
+                            <img class="img-fluid img-product" [src]="producto.images[variacionImg] | imagen:'productos'" alt="...">
+                        </td>
+                        <td>
+                            <div class="product-price">
+                                <span class="font-weight-bold">{{ this.formClienteData.get('variacion2')?.value }}</span>
+                                <span><b>TALLA:</b> {{ this.formClienteData.get('variacion1')?.value }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="product-price">
+                                <span class="old-price">{{ producto.precio | currency:'$':'symbol':'1.0' }}</span>
+                                <span class="font-weight-bold">{{ calcularPrecioDescuento(producto) | currency:'$':'symbol':'1.0' }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2" class="text-center">Total a cancelar al recibir</th>
+                        <td>
+                            <span class="font-weight-bold">{{ calcularPrecioDescuento(producto) | currency:'$':'symbol':'1.0' }}</span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+        <div class="col-12 mt-5 mb-5">
+            <div class="d-grid">
+
+                <button *ngIf="!submitPedido" (click)="createPurchase()" type="button"
+                        class="btn btn-lg btn-success animate__animated animate__pulse animate__slow animate__infinite"> Confirmar Pedido 🛍</button>
+
+                <button *ngIf="submitPedido" type="button" class="btn btn-block btn-warning waves-effect text-left"disabled>
+                        <i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Enviando pedido ...</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Fin de carrito y formulario -->
