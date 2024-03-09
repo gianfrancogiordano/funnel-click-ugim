@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'https://api.soyclickstore.com/api/v1',
+  base_url: 'https://elb.soyclickstore.com/api/v1',
   wsUrl: 'https://api.soyclickstore.com',
   cloudFront: 'https://d3cj1y2eynyat2.cloudfront.net',
   clickstoreId: '65cbb4aef603ea05486973f6',
